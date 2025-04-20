@@ -183,7 +183,10 @@ port(
  dl_wr          : in  std_logic;
  dl_din         : out std_logic_vector(7 downto 0);
  dl_nvram       : in  std_logic;
- dl_nvram_wr    : in  std_logic
+ dl_nvram_wr    : in  std_logic;
+
+ up_data        : out std_logic_vector(7 downto 0);
+ cmos_wr        : in std_logic
  );
 end mcr1;
 
@@ -717,20 +720,34 @@ cpu_rom_addr <= cpu_addr(14 downto 0);
 cpu_rom_rd <= '1' when cpu_mreq_n = '0' and cpu_rd_n = '0' and cpu_addr(15 downto 12) < X"7" else '0';
 
 -- working RAM   0x7000-0x77FF
-wram : entity work.dpram
+--wram : entity work.dpram
+--generic map( dWidth => 8, aWidth => 11)
+--port map(
+--	clk_a  => clock_vidn,
+--	we_a   => wram_we,
+--	addr_a => cpu_addr(10 downto 0),
+--	d_a    => cpu_do,
+--	q_a    => wram_do,
+-- 
+--	clk_b  => clock_vid,
+--	we_b   => (dl_wr or dl_nvram_wr) and dl_nvram,
+--	addr_b => dl_addr(10 downto 0),
+--	d_b    => dl_data(7 downto 0),
+--	q_b     => dl_din(7 downto 0)
+
+wram : entity work.cmos_ram
 generic map( dWidth => 8, aWidth => 11)
 port map(
-	clk_a  => clock_vidn,
-	we_a   => wram_we,
-	addr_a => cpu_addr(10 downto 0),
-	d_a    => cpu_do,
-	q_a    => wram_do,
- 
-	clk_b  => clock_vid,
-	we_b   => (dl_wr or dl_nvram_wr) and dl_nvram,
-	addr_b => dl_addr(10 downto 0),
-	d_b    => dl_data(7 downto 0),
-	q_b     => dl_din(7 downto 0)
+ clk_a  => clock_vidn,
+ addr_a => cpu_addr(10 downto 0),
+ d_a    => cpu_do,
+ we_a   => wram_we,
+ q_a    => wram_do,
+ clk_b  => clock_vid,
+ we_b   => cmos_wr,
+ addr_b => dl_addr(10 downto 0),
+ d_b    => dl_data,
+ q_b    => up_data
 );
 
 -- meter ram, 0x8000 - 0x81ff
