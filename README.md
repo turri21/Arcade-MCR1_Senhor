@@ -17,19 +17,14 @@ cmos_wr        : in std_logic
 ```
 
 in /rtl/mcr1.vhd
-
--- working RAM   0x7000-0x77FF
-
+```
 --wram : entity work.dpram
-
 lines 722 through 736
 
 replaced with: 
-
 wram : entity work.cmos_ram
-
 Lines 738 through 751
-
+```
 ___
 # Midway MCR1 port for MiSTer
 
