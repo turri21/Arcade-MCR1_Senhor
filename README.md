@@ -8,6 +8,8 @@ Issue on MiSTer https://github.com/MiSTer-devel/Arcade-MCR1_MiSTer/issues/11
 
 Fixed on Senhor:
 
+file /rtl/cmos_ram.vhd updated with a newer one
+
 in /rtl/mcr1.vhd
 
 -- working RAM   0x7000-0x77FF
