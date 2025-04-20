@@ -4,9 +4,9 @@ Tested: Working Video 720p, 1080p & Sound
 
 Dev notes: 
 
-Issue https://github.com/MiSTer-devel/Arcade-MCR1_MiSTer/issues/11 
+Issue on MiSTer https://github.com/MiSTer-devel/Arcade-MCR1_MiSTer/issues/11 
 
-Fix on Senhor:
+Fixed on Senhor:
 
 in /rtl/mcr1.vhd
 
@@ -14,35 +14,16 @@ in /rtl/mcr1.vhd
 
 --wram : entity work.dpram
 
+lines 722 through 736
+
 replaced with: 
 
 wram : entity work.cmos_ram
 
-generic map( dWidth => 8, aWidth => 11)
+Lines 738 through 751
 
-port map(
-
- clk_a  => clock_vidn,
  
- addr_a => cpu_addr(10 downto 0),
  
- d_a    => cpu_do,
- 
- we_a   => wram_we,
- 
- q_a    => wram_do,
- 
- clk_b  => clock_vid,
- 
- we_b   => cmos_wr,
- 
- addr_b => dl_addr(10 downto 0),
- 
- d_b    => dl_data,
- 
- q_b    => up_data
- 
-);
 ___
 # Midway MCR1 port for MiSTer
 
