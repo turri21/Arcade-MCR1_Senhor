@@ -4,9 +4,7 @@ Tested: Working Video 720p, 1080p & Sound
 
 Dev notes: 
 
-Issue on MiSTer https://github.com/MiSTer-devel/Arcade-MCR1_MiSTer/issues/11 
-
-*
+*Issue on MiSTer https://github.com/MiSTer-devel/Arcade-MCR1_MiSTer/issues/11 
 
 Fixed on Senhor:
 
