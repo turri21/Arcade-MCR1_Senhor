@@ -10,8 +10,8 @@ Dev notes:
 
 file /rtl/cmos_ram.vhd updated with a newer one
 
-```
 added lines 188 and 189
+```
 up_data        : out std_logic_vector(7 downto 0);
 cmos_wr        : in std_logic
 ```
