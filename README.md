@@ -19,7 +19,7 @@ cmos_wr        : in std_logic
 in /rtl/mcr1.vhd
 ```
 --wram : entity work.dpram
-lines 722 through 736
+lines 723 through 736
 
 replaced with: 
 wram : entity work.cmos_ram
