@@ -1,3 +1,32 @@
+-=(MCR1_Senhor notes)=-
+
+Tested: Working Video 720p, 1080p & Sound
+
+Dev notes: 
+
+* Issue on MiSTer https://github.com/MiSTer-devel/Arcade-MCR1_MiSTer/issues/11 
+
+* Fixed on Senhor:
+
+File /rtl/cmos_ram.vhd updated with a newer one.
+
+In /rtl/mcr1.vhd added lines 188 and 189
+```
+up_data        : out std_logic_vector(7 downto 0);
+cmos_wr        : in std_logic
+```
+
+also in /rtl/mcr1.vhd
+```
+--wram : entity work.dpram
+lines 723 through 736
+
+replaced with: 
+wram : entity work.cmos_ram
+Lines 738 through 751
+```
+___
+
 # Midway MCR1 port for MiSTer
 
 [Original readme](readme_orig.txt) (mostly irrelevant to MiSTer)
